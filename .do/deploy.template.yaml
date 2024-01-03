@@ -1,0 +1,15 @@
+spec:
+  name: prometheus
+  services:
+    - name: prometheus
+      git:
+        repo_clone_url: https://github.com/howtodeploy/prometheus-prometheus
+        branch: main
+      dockerfile_path: Dockerfile
+      instance_count: 1
+      http_port: 9090
+      health_check:
+        port: 9090
+        http_path: /-/healthy
+        initial_delay_seconds: 10
+      envs: []
