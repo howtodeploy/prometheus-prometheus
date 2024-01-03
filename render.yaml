@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: prometheus
+    env: docker
+    plan: free
+    numInstances: 1
+    healthCheckPath: /-/healthy
+    envVars:
+      - key: PORT
+        value: 9090
