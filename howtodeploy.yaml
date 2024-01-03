@@ -1,0 +1,18 @@
+name: prometheus
+providers:
+  - render
+  - digitalocean
+  - docker
+  - flyio
+services:
+  - type: docker
+    name: prometheus
+    dockerfile: |
+      FROM prom/prometheus
+    docker_run_cmd: docker run -p 9090:9090 prom/prometheus
+    instance_count: 1
+    http_port: 9090
+    health_check:
+      port: 9090
+      http_path: /-/healthy
+      initial_delay_seconds: 10
